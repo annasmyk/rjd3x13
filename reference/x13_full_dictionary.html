@@ -68,9 +68,21 @@ Can be used to generate an output non available by default with userdefined opti
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># visualize the dictionary</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="fu">x13_full_dictionary</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>unable to open display</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .External2(C_dataviewer, x, title):</span> unable to start data viewer</span>
+<span class="r-in"><span><span class="co"># first 10 lines</span></span></span>
+<span class="r-in"><span><span class="fu">x13_full_dictionary</span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,<span class="op">]</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           name                                               description</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       period                                      period of the series</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   span.start                  start of the considered (partial) series</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     span.end                    end of the considered (partial) series</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       span.n      number of periods in the considered (partial) series</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 span.missing number of missing values in the considered (partial) s...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6          log                                         log-transformtion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  For a complete list of all outputs, please call summary()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  For more informations about the type, the java class of the output or additive details, call `View()`.</span>
+<span class="r-in"><span><span class="co"># for more structured information call `View(x13_full_dictionary())`</span></span></span>
 <span class="r-in"><span><span class="co"># extract names of output of interest</span></span></span>
 <span class="r-in"><span><span class="va">user_defined_output</span> <span class="op">&lt;-</span> <span class="fu">x13_full_dictionary</span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">135</span>,<span class="fl">1</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">user_defined_output</span></span></span>

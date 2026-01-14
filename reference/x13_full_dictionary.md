@@ -28,9 +28,21 @@ objects (series, diagnostics, parameters) available with
 
 ``` r
 # visualize the dictionary
-View(x13_full_dictionary())
-#> Warning: unable to open display
-#> Error in .External2(C_dataviewer, x, title): unable to start data viewer
+# first 10 lines
+x13_full_dictionary()[1:10,]
+#>           name                                               description
+#> 1       period                                      period of the series
+#> 2   span.start                  start of the considered (partial) series
+#> 3     span.end                    end of the considered (partial) series
+#> 4       span.n      number of periods in the considered (partial) series
+#> 5 span.missing number of missing values in the considered (partial) s...
+#> 6          log                                         log-transformtion
+#> ...
+#> 
+#>  For a complete list of all outputs, please call summary()
+#> 
+#>  For more informations about the type, the java class of the output or additive details, call `View()`.
+# for more structured information call `View(x13_full_dictionary())`
 # extract names of output of interest
 user_defined_output <- x13_full_dictionary()[135,1]
 user_defined_output
