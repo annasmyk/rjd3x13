@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3x13</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.6.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.7.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-jdemetra-"><li><a class="external-link dropdown-item" href="https://github.com/jdemetra/jdemetra-app/releases">Download JDemetra+</a></li>
     <li><a class="external-link dropdown-item" href="https://jdemetra-new-documentation.netlify.app/">JDemetra+ documentation</a></li>
   </ul></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rjdverse/rjd3x13"><span class="fa fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rjdverse/rjd3x13" aria-label="GitHub"><span class="fa fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -110,7 +110,9 @@ specification object first.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="va"><a href="https://rjdverse.github.io/rjd3toolkit/reference/ABS.html" class="external-link">ABS</a></span><span class="op">$</span><span class="va">X0.2.09.10.M</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rjdverse/rjd3toolkit" class="external-link">"rjd3toolkit"</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="va"><a href="https://rjdverse.github.io/rjd3toolkit/reference/ABS.html" class="external-link">ABS</a></span><span class="op">$</span><span class="va">X0.2.09.10.M</span></span></span>
 <span class="r-in"><span><span class="fu">x13_fast</span><span class="op">(</span><span class="va">y</span>, <span class="st">"rsa3"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model: X-13</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Log-transformation: yes </span>
@@ -126,7 +128,7 @@ specification object first.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Seasonal filter: S3X3;  Trend filter: H-23 terms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  M-Statistics: q Good (0.560); q-m2 Good (0.617)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Uncertain (0.035);  F-test on SA: Good (0.999)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Good (0.050);  F-test on SA: Good (0.898)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> For a more detailed output, use the 'summary()' function.</span>
 <span class="r-in"><span><span class="fu">x13</span><span class="op">(</span><span class="va">y</span>, <span class="st">"rsa5c"</span><span class="op">)</span></span></span>
@@ -148,7 +150,7 @@ specification object first.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Seasonal filter: S3X3;  Trend filter: H-23 terms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  M-Statistics: q Good (0.385); q-m2 Good (0.427)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Bad (0.004);  F-test on SA: Good (0.986)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Bad (0.003);  F-test on SA: Good (0.809)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> For a more detailed output, use the 'summary()' function.</span>
 <span class="r-in"><span><span class="fu"><a href="regarima.html">regarima_fast</a></span><span class="op">(</span><span class="va">y</span>, <span class="st">"rg0"</span><span class="op">)</span></span></span>
@@ -178,12 +180,12 @@ specification object first.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> For a more detailed output, use the 'summary()' function.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu"><a href="x13_spec.html">x13_spec</a></span><span class="op">(</span><span class="st">"rsa5c"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/add_outlier.html" class="external-link">add_outlier</a></span><span class="op">(</span><span class="va">sp</span>,</span></span>
+<span class="r-in"><span><span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/add_outlier.html" class="external-link">add_outlier</a></span><span class="op">(</span><span class="va">sp</span>,</span></span>
 <span class="r-in"><span>    type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AO"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2015-01-01"</span>, <span class="st">"2010-01-01"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/set_transform.html" class="external-link">set_transform</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/set_tradingdays.html" class="external-link">set_tradingdays</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>        <span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/set_easter.html" class="external-link">set_easter</a></span><span class="op">(</span><span class="va">sp</span>, enabled <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span><span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/set_transform.html" class="external-link">set_transform</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/set_tradingdays.html" class="external-link">set_tradingdays</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/set_easter.html" class="external-link">set_easter</a></span><span class="op">(</span><span class="va">sp</span>, enabled <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>        option <span class="op">=</span> <span class="st">"workingdays"</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span>,</span></span>
 <span class="r-in"><span>    fun <span class="op">=</span> <span class="st">"None"</span></span></span>
@@ -207,7 +209,7 @@ specification object first.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Seasonal filter: S3X2;  Trend filter: H-23 terms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  M-Statistics: q Good (0.552); q-m2 Good (0.624)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Good (0.138);  F-test on SA: Good (0.996)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Good (0.210);  F-test on SA: Good (0.994)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> For a more detailed output, use the 'summary()' function.</span>
 <span class="r-in"><span><span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu"><a href="x11_spec.html">set_x11</a></span><span class="op">(</span><span class="va">sp</span>,</span></span>
@@ -230,12 +232,13 @@ specification object first.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Seasonal filter: S3X2;  Trend filter: H-13 terms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  M-Statistics: q Good (0.533); q-m2 Good (0.604)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Good (0.117);  F-test on SA: Good (0.997)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  QS test on SA: Good (0.189);  F-test on SA: Good (0.990)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> For a more detailed output, use the 'summary()' function.</span>
-<span class="r-in"><span><span class="va">j</span><span class="op">&lt;-</span> <span class="fu">jx13</span><span class="op">(</span><span class="va">y</span>, spec <span class="op">=</span> <span class="va">sp</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">j</span> <span class="op">&lt;-</span> <span class="fu">jx13</span><span class="op">(</span><span class="va">y</span>, spec <span class="op">=</span> <span class="va">sp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">j</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "JD3_Object"      "JD3_ProcResults"</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

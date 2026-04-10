@@ -1,33 +1,55 @@
 # X-13 Dictionary
 
-Function providing the names all output objects (series, diagnostics,
-parameters) available with
+Functions to provide information for all output objects (series,
+diagnostics, parameters) available with
 [`x13()`](https://rjdverse.github.io/rjd3x13/reference/x13.md) function.
-Can be used to generate an output non available by default with
-userdefined option in
-[`x13()`](https://rjdverse.github.io/rjd3x13/reference/x13.md)function
-(see examples).
 
 ## Usage
 
 ``` r
 x13_dictionary()
+
+x13_full_dictionary()
 ```
 
 ## Value
 
-returns a vector containing the names of all output objects (series,
-diagnostics, parameters) available with
+`x13_dictionary()` returns a character vector containing the names of
+all output objects (series, diagnostics, parameters) available with the
+[`x13()`](https://rjdverse.github.io/rjd3x13/reference/x13.md) function,
+whereas `x13_full_dictionary()` returns a `data.frame` with format and
+description, for all the output objects.
+
+## Details
+
+These functions provide lists of output names (series, diagnostics,
+parameters) available with the
 [`x13()`](https://rjdverse.github.io/rjd3x13/reference/x13.md) function.
-
-## See also
-
-`x13_full_dictionary` for a detailed version of the output description
+These names can be used to generate customized outputs with the
+userdefined option of the
+[`x13()`](https://rjdverse.github.io/rjd3x13/reference/x13.md) function
+(see examples). The `x13_full_dictionary` function provides additional
+information on object format and description.
 
 ## Examples
 
 ``` r
-# visualize the list of names
+library("rjd3toolkit")
+# \donttest{
+# Visualize the dictionary
+print(x13_dictionary())
+#> List of possible outputs:
+#> 
+#> - period
+#> - span.start
+#> - span.end
+#> - span.n
+#> - span.missing
+#> - log 
+#> - ...
+#> 
+#>  For a complete list of all outputs, please call summary()
+#>  For a detailled summary of all outputs, please use the function `x13_full_dictionary()` or `tramoseats_full_dictionary()`
 summary(x13_dictionary())
 #> List of possible outputs:
 #> 
@@ -367,22 +389,45 @@ summary(x13_dictionary())
 #> - benchmarking.result 
 #> 
 #>  For a detailled summary of all outputs, please use the function `x13_full_dictionary()` or `tramoseats_full_dictionary()`
-# set up vector with names of output objects of interest
-user_defined_output <- c("ylin", "residuals.kurtosis")
-# generate the corresponding output in an estimation
-library(rjd3toolkit)
+
+# first 10 lines
+head(x13_full_dictionary(), n = 10)
+#>           name                                               description
+#> 1       period                                      period of the series
+#> 2   span.start                  start of the considered (partial) series
+#> 3     span.end                    end of the considered (partial) series
+#> 4       span.n      number of periods in the considered (partial) series
+#> 5 span.missing number of missing values in the considered (partial) s...
+#> 6          log                                         log-transformtion
+#> ...
 #> 
-#> Attaching package: ‘rjd3toolkit’
-#> The following objects are masked from ‘package:stats’:
+#>  For a complete list of all outputs, please call summary()
 #> 
-#>     aggregate, mad
-y <- rjd3toolkit::ABS$X0.2.09.10.M
-m<-x13(y,"rsa3", userdefined=user_defined_output)
-# retrieve user defined output
+#>  For more informations about the type, the java class of the output or additive details, call `View()`.
+# For more structured information call `View(x13_full_dictionary())`
+
+# Extract names of output of interest
+user_defined_output <- x13_dictionary()[c(65, 95, 135)]
+user_defined_output
+#> [1] "residuals.kurtosis" "ylin"               "sa_f"              
+
+# Generate the corresponding output in an estimation
+y <- ABS$X0.2.09.10.M
+m <- x13(y,"rsa3", userdefined=user_defined_output)
+
+# Retrieve user defined output
 tail(m$user_defined$ylin)
 #>         Mar    Apr    May    Jun    Jul    Aug
 #> 2017 1370.3 1522.6 1452.4 1557.2 1445.5 1303.1
 m$user_defined$residuals.kurtosis
 #> Value: 3.143851 
 #> P-Value: 0.5512 
+m$user_defined$sa_f
+#>           Jan      Feb      Mar      Apr      May      Jun      Jul      Aug
+#> 2017                                                                        
+#> 2018 1545.102 1550.995 1544.872 1558.419 1556.812 1546.513 1552.880 1555.686
+#>           Sep      Oct      Nov      Dec
+#> 2017 1559.713 1541.278 1551.031 1550.678
+#> 2018                                    
+# }
 ```
