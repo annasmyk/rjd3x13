@@ -19,7 +19,7 @@ set_x11(
   calendar.sigma = c(NA, "None", "Signif", "All", "Select"),
   sigma.vector = NA,
   exclude.forecast = NA,
-  bias = c(NA, "LEGACY")
+  bias = c(NA, "LEGACY", "SMOOTH", "RATIO")
 )
 ```
 
@@ -32,15 +32,22 @@ set_x11(
 
 - mode:
 
-  character: the decomposition mode. Determines the mode of the seasonal
-  adjustment decomposition to be performed: `"Undefined"` - no
-  assumption concerning the relationship between the time series
-  components is made; `"Additive"` - assumes an additive relationship;
-  `"Multiplicative"` - assumes a multiplicative relationship;
-  `"LogAdditive"` - performs an additive decomposition of the logarithms
-  of the series being adjusted; `"PseudoAdditive"` - assumes an
-  pseudo-additive relationship. Could be changed by the program, if
-  needed.
+  character: the decomposition mode in X11. Determines the mode of the
+  seasonal adjustment decomposition to be performed: If a pre-adjustment
+  is performed mode is inherited:
+
+  - if log transformation in pre-adjustment, X11 `mode` is
+    `"Multiplicative"` by default (or can also be `"LogAdditive"` if set
+    by the user)
+
+  - if no log transformation, X11 `mode` is `"Additive"` by default (or
+    can also be `"PseudoAdditive"` if set by the user)
+
+  - If NO pre-adjustment is performed, just X-11 decomposition using
+    'x=x11_spec()' spec, mode is `"Multiplicative"` by default, it can
+    be set to `"Additive"`, `"LogAdditive"`, `"PseudoAdditive"` (could
+    be changed by the program, if needed). If set to `"Undefined"` an
+    additive decomposition is performed, see details.
 
 - seasonal.comp:
 
@@ -111,11 +118,29 @@ set_x11(
 
 - bias:
 
-  TODO.
+  If `mode = "LogAdditive"` (only in this case) a correction is applied
+  when computing final components (S, T, I) in level from components
+  estimated in log. Then `bias= "RATIO"` (default) Average of S (on
+  complete years) and I (on the whole series) is set to 1, the
+  correction is allocated to T.). `"LEGACY"` or `"SMOOTH"` corrections
+  are based on trend filters.
 
 ## Value
 
 a "JD3_X11_SPEC" object, containing all the parameters.
+
+## Details
+
+Decomposition mode formulas (Y: raw series, T: trend, S: seasonal, I:
+Irregular, SA: seasonally adjusted series)
+
+- Additive: `Y=T+S+I`, `SA =Y-S=T+I`
+
+- Multiplicative `Y=T*S*I`, `SA =Y/S=T*I`
+
+- LogAdditive `Log(Y) = T + S + I`, `SA=exp(T+I)=Y/exp(S)`
+
+- PseudoAdditive `Y=T*(S+I-1)`, `SA=T*I`
 
 ## See also
 
@@ -126,7 +151,7 @@ and
 ## Examples
 
 ``` r
-init_spec <- x11_spec()
+init_spec <- x13_spec()
 new_spec <- set_x11(init_spec,
     mode = "LogAdditive",
     seasonal.comp = 1,
@@ -139,6 +164,6 @@ new_spec <- set_x11(init_spec,
     calendar.sigma = "All",
     sigma.vector = NA,
     exclude.forecast = FALSE,
-    bias = "LEGACY"
+    bias = "RATIO"
 )
 ```
